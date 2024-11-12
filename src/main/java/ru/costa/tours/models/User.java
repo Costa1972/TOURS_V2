@@ -11,6 +11,8 @@ import org.hibernate.annotations.FetchMode;
 import java.io.Serializable;
 import java.util.Set;
 
+import static jakarta.persistence.FetchType.LAZY;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -39,7 +41,7 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     @Fetch(FetchMode.JOIN)
