@@ -1,0 +1,16 @@
+server:
+  port: 8888
+  servlet:
+    context-path: "/"
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/tours_db
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+
