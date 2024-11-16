@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 @Table(name = "paiments")
@@ -28,7 +27,4 @@ public class Payment implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pmnt_basis_id", referencedColumnName = "id")
     private PaymentBasis paymentBasis;
-
-    @ManyToMany(mappedBy = "payments")
-    Set<User> users;
 }

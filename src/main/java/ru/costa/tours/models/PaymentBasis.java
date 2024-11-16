@@ -23,6 +23,6 @@ public class PaymentBasis implements Serializable {
     @Column(name = "title")
     private String title;
 
-    @OneToOne(mappedBy = "paymentBasis")
-    private Payment payment;
+//    @OneToOne(mappedBy = "paymentBasis")
+//    private Payment payment;
 }

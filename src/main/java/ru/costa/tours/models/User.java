@@ -26,10 +26,10 @@ public class User implements Serializable {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "last_name")
+    @Column(name = "lastname")
     private String lastName;
 
-    @Column(name = "first_name")
+    @Column(name = "firstname")
     private String firstName;
 
     @Column(name = "patronymic")
@@ -41,8 +41,10 @@ public class User implements Serializable {
     @Column(name = "email")
     private String emailAsUsername;
 
-    @Column(name = "password")
-    private String password;
+    @OneToOne(cascade = CascadeType.ALL, fetch = LAZY)
+    @JoinColumn(name = "password_id", referencedColumnName = "id")
+    @Fetch(FetchMode.JOIN)
+    private Password password;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
@@ -54,8 +56,9 @@ public class User implements Serializable {
     @JoinColumn(name = "passport_id", referencedColumnName = "id")
     private Passport passport;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_payment", joinColumns = @JoinColumn(name = "user_id"),
+    @ManyToMany(cascade = CascadeType.ALL, fetch = LAZY)
+    @JoinTable(name = "users_payments", joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "payment_id"))
+    @Fetch(FetchMode.JOIN)
     private Set<Payment> payments;
 }

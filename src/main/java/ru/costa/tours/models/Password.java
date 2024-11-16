@@ -2,29 +2,20 @@ package ru.costa.tours.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Entity
-@Table(name = "passports")
+@Table(name = "passwords")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Passport implements Serializable {
-
+public class Password implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private Long id;
-
-    @Column(name = "series")
-    private String series;
-
-    @Column(name = "number")
-    private String number;
-
+    private final Long id = 1L;
+    @Column(name = "content")
+    private String content;
 }
